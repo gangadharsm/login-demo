@@ -1,0 +1,41 @@
+<div class="jumbotron">
+    <h2>JobPoster Details Form</h2>
+    <form [formGroup]="rForm" (ngSubmit)="submitForm(rForm.value)">
+     <div class="form-group">
+        <label>Job Id</label>
+        <input class="form-control" type="text" placeholder="Enter the Job Id" [formControl]="rForm.controls['jobId']">
+        <div *ngIf="rForm.controls['jobId'].hasError('required') && rForm.controls['jobId'].touched" class="alert alert-danger">You must add jobId.</div>
+      </div>
+      <div class="form-group">
+        <label> Job Title</label>
+        <input class="form-control" type="text" placeholder="Enter the Job Title" [formControl]="rForm.controls['jobTitle']">
+        <div *ngIf="rForm.controls['jobTitle'].hasError('required') && rForm.controls['jobTitle'].touched" class="alert alert-danger">You must add Job Poster</div>
+      </div>
+      <div class="form-group">
+        <label>Job Description</label>
+        <input class="form-control" type="text" placeholder="Enter your Job Description" [formControl]="rForm.controls['jobDes']">
+        <div *ngIf="rForm.controls['jobDes'].hasError('required') && rForm.controls['jobDes'].touched" class="alert alert-danger">You must add Job Description.</div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="!display">
+  <table class="table table-bordered">
+<thead>
+<tr>
+<th>JobId</th>
+<th>JobTitle</th>
+<th>JobTitle</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let array of FromData">
+<td>{{array.jobId}}</td>
+<td>{{array.jobTitle}}</td>
+<td>{{array.jobDes}}</td>
+</tr>
+</tbody>
+</table>
+  </div>

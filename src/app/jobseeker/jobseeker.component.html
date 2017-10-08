@@ -1,0 +1,49 @@
+<div class="jumbotron">
+    <h2>JobSeeker personal details Form</h2>
+    <form [formGroup]="rForm" (ngSubmit)="submitForm(rForm.value)">
+     <div class="form-group">
+        <label>Name:</label>
+        <input class="form-control" type="text" placeholder="Enter your Name" [formControl]="rForm.controls['Name']">
+        <div *ngIf="rForm.controls['Name'].hasError('required') && rForm.controls['Name'].touched" class="alert alert-danger">You must add Name.</div>
+      </div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input class="form-control" type="text" placeholder="John@doe.com" [formControl]="rForm.controls['email']">
+        <div *ngIf="rForm.controls['email'].hasError('required') && rForm.controls['email'].touched" class="alert alert-danger">You must add an Email.</div>
+      </div>
+      <div class="form-group">
+        <label>Work experience:</label>
+        <input class="form-control" type="text" placeholder="Enter your Work experience" [formControl]="rForm.controls['Work']">
+        <div *ngIf="rForm.controls['Work'].hasError('required') && rForm.controls['Work'].touched" class="alert alert-danger">You must add Work experience.</div>
+      </div>
+       <div class="form-group">
+        <label>Education experience:</label>
+        <input class="form-control" type="text" placeholder="Enter your Education details" [formControl]="rForm.controls['Education']">
+        <div *ngIf="rForm.controls['Education'].hasError('required') && rForm.controls['Education'].touched" class="alert alert-danger">You must add Education details.</div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="!display">
+  <table class="table table-bordered">
+<thead>
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Work experience</th>
+<th>Education</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let array of FromData">
+<td>{{array.Name}}</td>
+<td>{{array.email}}</td>
+<td>{{array.Work}}</td>
+<td>{{array.Education}}</td>
+</tr>
+</tbody>
+</table>
+  </div>
